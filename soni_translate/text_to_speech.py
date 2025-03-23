@@ -1215,12 +1215,11 @@ def se_process_audio_segments(
 
     source_se_path = os.path.join(source_seg, "se.pth")
 
-    if os.path.isfile(source_se_path):
+if os.path.isfile(source_se_path):
     se = torch.load(source_se_path, weights_only=False).to(device)
     logger.debug(f"Previous created {source_se_path}")
 else:
     se = tone_color_converter.extract_se(source_audio_segs, source_se_path)
-
 
 
 def create_wav_vc(
